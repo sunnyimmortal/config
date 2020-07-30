@@ -124,6 +124,8 @@ set statusline+=\ -\ 		"separator
 set statusline+=FileType 	"label
 set statusline+=%y		"filetype
 "set statusline+=%04l		"at least 4 characters width
+set hlsearch
+set incsearch
 
 
 "}}}
@@ -131,20 +133,18 @@ set statusline+=%y		"filetype
 "Mappings 		-----{{{
 let mapleader = "\<Space>"
 let maplocalleader = ","
-nnoremap <leader>y 0v$yo<esc>
-nnoremap <leader>d ddO
-nnoremap <leader>w viw
-nnoremap <leader>\ :vs<CR><c-w>w
-nnoremap <c-u> vU
-nnoremap - dd
-nnoremap <leader>w <c-w>w
-nnoremap -c ddO
-inoremap <c-d> <esc>ddi
-inoremap <c-u> <esc>vwUi
-inoremap <c-l> <esc>vwui
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
-nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+nnoremap <leader>y 0v$yo<esc>			" copy current line and move down	
+nnoremap <leader>d ddO				" delete current line and i
+nnoremap <leader>w viw				" choose a word
+nnoremap <leader>\ :vs<CR><c-w>w		" split window
+nnoremap <c-u> vU				" uppercase
+nnoremap <leader>w <c-w>w			" change window 
+inoremap <c-d> <esc>ddi				" change current line	
+inoremap <c-u> <esc>vwUi			" upper current word
+inoremap <c-l> <esc>vwui			" lower current word
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>	" edit vimrc
+nnoremap <leader>sv :source $MYVIMRC<cr>	" so vimrc
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel	
 nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 nnoremap <leader>( viw<esc>a(<esc>bi)<esc>lel
 nnoremap <leader>{ viw<esc>a{<esc>bi}<esc>lel
@@ -162,7 +162,6 @@ autocmd FileType javascript nnoremap<buffer> <localleader>c I//<esc>
 autocmd FileType python nnoremap<buffer> <localleader>c I#<esc>
 autocmd FileType vim nnoremap<buffer> <localleader>c I"<esc>
 
-
 "snippet
 iabbrev @@ lalala121.163.com
 iabbrev ssig --<cr>Steve Losh<cr>steve@stevelosh.com
@@ -174,6 +173,8 @@ augroup filetype_html
     autocmd!
     autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
 augroup END
+
+
 " }}}
  
 "Vimscript settings -------{{{
