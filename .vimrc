@@ -141,6 +141,7 @@ nnoremap <c-u> vU				" uppercase
 nnoremap <leader>w <c-w>w			" change window 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>	" edit vimrc
 nnoremap <leader>sv :source $MYVIMRC<cr>	" so vimrc
+nnoremap <leader>evp :vsplit ~/.vim/plugin/grep-operator.vim
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel	
 nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 nnoremap <leader>( viw<esc>a(<esc>bi)<esc>lel
