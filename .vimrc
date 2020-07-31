@@ -24,9 +24,9 @@ set backspace=indent,eol,start
 
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
-else
-  set backup		" keep a backup file (restore to previous version)
-  set undofile		" keep an undo file (undo changes after closing)
+"else
+  "set backup		" keep a backup file (restore to previous version)
+  "set undofile		" keep an undo file (undo changes after closing)
 endif
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
@@ -126,7 +126,7 @@ set statusline+=%y		"filetype
 "set statusline+=%04l		"at least 4 characters width
 set hlsearch
 set incsearch
-
+set nowrap
 
 "}}}
 
@@ -139,9 +139,6 @@ nnoremap <leader>w viw				" choose a word
 nnoremap <leader>\ :vs<CR><c-w>w		" split window
 nnoremap <c-u> vU				" uppercase
 nnoremap <leader>w <c-w>w			" change window 
-inoremap <c-d> <esc>ddi				" change current line	
-inoremap <c-u> <esc>vwUi			" upper current word
-inoremap <c-l> <esc>vwui			" lower current word
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>	" edit vimrc
 nnoremap <leader>sv :source $MYVIMRC<cr>	" so vimrc
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel	
@@ -149,11 +146,22 @@ nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 nnoremap <leader>( viw<esc>a(<esc>bi)<esc>lel
 nnoremap <leader>{ viw<esc>a{<esc>bi}<esc>lel
 nnoremap <leader>[ viw<esc>a[<esc>bi]<esc>lel
+nnoremap <leader>g :silent exe "grep! -R ".shellescape(expand("<cWORD>"))." ."<cr>:copen<cr> 
+
+
+
+inoremap <c-d> <esc>ddi				" change current line	
+inoremap <c-u> <esc>vwUi			" upper current word
+inoremap <c-l> <esc>vwui			" lower current word
 vnoremap <leader>' <esc>a'<esc>`<i'<esc>
 vnoremap <leader>( <esc>a(<esc>`<i)<esc>
 vnoremap <leader>{ <esc>a{<esc>`<i}<esc>
 vnoremap <leader>[ <esc>a[<esc>`<i]<esc>
 vnoremap <leader>" <esc>a"<esc>`<i"<esc>
+
+
+
+
 "}}}
 
 "Filetype special settings 	---{{{
@@ -163,7 +171,7 @@ autocmd FileType python nnoremap<buffer> <localleader>c I#<esc>
 autocmd FileType vim nnoremap<buffer> <localleader>c I"<esc>
 
 "snippet
-iabbrev @@ lalala121.163.com
+"iabbrev @@ lalala121.163.com
 iabbrev ssig --<cr>Steve Losh<cr>steve@stevelosh.com
 autocmd FileType python iabbrev <buffer> iff if:<left>
 autocmd FileType javascript iabbrev <buffer> iff if()<left>
